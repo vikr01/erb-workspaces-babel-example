@@ -13,12 +13,15 @@ const productionPlugins = [
   require('babel-plugin-transform-react-remove-prop-types')
 ];
 
+const {workspaces = []} = require('./package.json');
+
 module.exports = api => {
-  // see docs about api at https://babeljs.io/docs/en/config-files#apicache
+  // see docs about api at https://babeljs.io/docs/en/config-files#config-function-api
 
   const development = api.env(developmentEnvironments);
 
   return {
+    babelrcRoots: workspaces.packages || workspaces,
     presets: [
       [
         require('@babel/preset-env'),

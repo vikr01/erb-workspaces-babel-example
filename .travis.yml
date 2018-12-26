@@ -75,10 +75,10 @@ before_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sleep 3; fi
 
 script:
-  - yarn package-ci
-  - yarn lint
-  - yarn flow
+  - yarn workspace electron-react-boilerplate package-ci
+  - yarn workspace electron-react-boilerplate lint
+  - yarn workspace electron-react-boilerplate flow
   # HACK: Temporarily ignore `yarn test` on linux
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then yarn test; fi
-  - yarn build-e2e
-  - yarn test-e2e
+  - yarn workspace electron-react-boilerplate build-e2e
+  - yarn workspace electron-react-boilerplate test-e2e
