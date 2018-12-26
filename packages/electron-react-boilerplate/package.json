@@ -27,11 +27,10 @@
     "start": "cross-env NODE_ENV=production electron ./app/main.prod.js",
     "start-main-dev": "cross-env HOT=1 NODE_ENV=development electron -r ./internals/scripts/BabelRegister.js  ./app/main.dev.js",
     "start-renderer-dev": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.renderer.dev.babel.js",
-    "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 jest",
-    "test-all": "yarn lint && yarn flow && yarn build && yarn test && yarn build-e2e && yarn test-e2e",
+    "test-all-before": "yarn lint && yarn flow && yarn build",
+    "test-all-after": "yarn build-e2e && yarn test-e2e",
     "test-e2e": "node -r ./internals/scripts/BabelRegister.js  ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe electron:./ ./test/e2e/HomePage.e2e.js",
-    "test-e2e-live": "node -r ./internals/scripts/BabelRegister.js ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe-live electron:./ ./test/e2e/HomePage.e2e.js",
-    "test-watch": "yarn test --watch"
+    "test-e2e-live": "node -r ./internals/scripts/BabelRegister.js ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe-live electron:./ ./test/e2e/HomePage.e2e.js"
   },
   "lint-staged": {
     "*.{js,jsx}": [

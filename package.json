@@ -46,7 +46,9 @@
     "flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || true",
     "postinstall": "yarn flow-typed && lerna run postinstall",
     "dev": "yarn workspace electron-react-boilerplate dev",
-    "test": "lerna run test"
+    "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 jest",
+    "test-all": "lerna run test-all-before && yarn test && lerna run test-all-after",
+    "test-watch": "yarn test --watch"
   },
   "jest": {
     "testURL": "http://localhost/",
